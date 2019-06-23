@@ -36,9 +36,9 @@ Java is pass by value: (passbyvalue package)
    but if in function we assign another object to the passed object and then change it, the original object would not change.
    notice that ALL types other than the primitive types (int, double,boolean, etc) are reference types( even types like Integer, Double, Boolean, and arrays).
 
-//future READING:
+--- Future READING:
 - thread cooperation
-
+(inter-thread communication to aquire lock for critical section)
 - private final Lock lock = new ReentrantLock(true);
 - semaphore (n threads)  vs  mutex (1 thread)
 
