@@ -19,11 +19,11 @@ There are two types of thread synchronization mutual exclusive and inter-thread 
 - Cooperation (Inter-thread communication in java)
         is a mechanism in which a thread is paused running in its critical section and another thread is allowed to enter (or lock of object)
         in the same critical section to be executed.It is implemented by following methods of Object class:(it tackle the polling problem)
-            wait()   on Object class
-            notify()  on Object class
-            notifyAll()  on Object class
+            wait()   (on monitor object)
+            notify()   (on monitor object)
+            notifyAll()   (on monitor object)
 
-        ****https://www.javatpoint.com/inter-thread-communication-example*****  --> I should read
+        ****https://www.javatpoint.com/inter-thread-communication-example*****  --> very good resource
 
 Lock in java:
 Every object has an lock associated with it. By convention, a thread that needs consistent access to an object's fields has to
@@ -36,6 +36,11 @@ Java is pass by value: (passbyvalue package)
    but if in function we assign another object to the passed object and then change it, the original object would not change.
    notice that ALL types other than the primitive types (int, double,boolean, etc) are reference types( even types like Integer, Double, Boolean, and arrays).
 
+//future READING:
+- thread cooperation
+
+- private final Lock lock = new ReentrantLock(true);
+- semaphore (n threads)  vs  mutex (1 thread)
 
 
 
