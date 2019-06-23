@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifcp.qms.services;
+package com.depThreads.services;
 
-import com.ifcp.qms.workers.NightlyJob;
-
+import com.depThreads.workers.MonthlyJob;
+import com.depThreads.workers.NightlyJob;
+import com.depThreads.workers.Workers;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -14,9 +15,6 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.ifcp.qms.workers.MonthlyJob;
-import com.ifcp.qms.workers.Workers;
 
 /**
  * @author ispareh.m
@@ -31,34 +29,29 @@ public class Dispatcher {
 
         Dispatcher dispatcher = new Dispatcher();
 
+        int[] arr = {1, 2, 3, 4, 5};
+
         switch (jobName) {
             case "NightlyJob":
-                dispatcher.work = new NightlyJob();
+                dispatcher.work = new NightlyJob(arr);
                 break;
             case "MonthlyJob":
-                dispatcher.work = new MonthlyJob();
+                dispatcher.work = new MonthlyJob(arr);
                 break;
         }
 
-        List<Integer> list = Stream.iterate(1, n -> n + 3)
-                .limit(100)
-                .collect(Collectors.toList());
+        pool = Executors.newFixedThreadPool(2);
+        pool.execute(new MonthlyJob(arr));
+        pool.execute(new NightlyJob(arr));
 
-        pool = Executors.newFixedThreadPool(threadNumbers);  //for independent threads
+        pool.shutdown(); // does one thing: prevents clients to send more work to the executor
 
-        list.forEach(item -> dispatcher.runThreads(item));
-//        while (it.hasNext()) {
-//            work.setId(it.next().getVin());
-//            pool.execute(work);
-//        }
+        while(!pool.isTerminated()){}
 
-        pool.shutdown();
-    }
+        for (int i : arr) {
+            System.out.println(i);
 
-    private void runThreads(int id) {
-        work.setId(Integer.toString(id));
-        pool.execute(work);
-
+        }
     }
 
 }

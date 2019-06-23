@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ifcp.qms.workers;
+package com.indepThreads.workers;
 
 
-import com.ifcp.qms.services.Dispatcher;
+import com.indepThreads.services.Dispatcher;
+
 import java.util.logging.Logger;
 
 public class NightlyJob  extends Workers {

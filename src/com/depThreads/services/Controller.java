@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.ifcp.qms.services;
+package com.depThreads.services;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
