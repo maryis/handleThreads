@@ -33,6 +33,9 @@ public class Dispatcher {
 
         switch (jobName) {
             case "NightlyJob":
+
+                //for simple threads use lambda expression
+                //Runnable task2 = () -> { System.out.println("Task #2 is running"); };
                 dispatcher.work = new NightlyJob();
                 break;
             case "MonthlyJob":
@@ -44,7 +47,7 @@ public class Dispatcher {
                 .limit(100)
                 .collect(Collectors.toList());
 
-        pool = Executors.newFixedThreadPool(threadNumbers);  //for independent threads
+        pool = Executors.newFixedThreadPool(threadNumbers);
 
         list.forEach(item -> dispatcher.runThreads(item));
 //        while (it.hasNext()) {

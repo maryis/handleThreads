@@ -9,16 +9,16 @@ import com.depThreads.workers.MonthlyJob;
 import com.depThreads.workers.NightlyJob;
 import com.depThreads.workers.Workers;
 
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
 
 /**
  * @author ispareh.m
  */
+
+
 public class Dispatcher {
 
     Workers work;
@@ -46,7 +46,8 @@ public class Dispatcher {
 
         pool.shutdown(); // does one thing: prevents clients to send more work to the executor
 
-        while(!pool.isTerminated()){}
+        while (!pool.isTerminated()) {
+        }
 
         for (int i : arr) {
             System.out.println(i);

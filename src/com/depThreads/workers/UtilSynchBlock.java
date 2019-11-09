@@ -3,7 +3,8 @@ package com.depThreads.workers;
 public class UtilSynchBlock {
 
     public void multiple(int[] arr, int mult) {
-        synchronized (arr) {  //synchronized (UtilSynchBlock.class)
+        synchronized (arr) {  //just one thread can work with arr in a time
+            //or synchronized (UtilSynchBlock.class) or synchronized(this) or ...
 
             for (int i = 0; i < arr.length; i++)
                 arr[i] = arr[i] * mult;

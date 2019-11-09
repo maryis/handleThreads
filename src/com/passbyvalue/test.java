@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class test {
+
     public static void main(String[] args) {
         int a = 100;
         foo(a);
@@ -22,7 +23,6 @@ public class test {
         System.out.printf("for non-primitive type List the value does change:\n");
         foo(c);
         c.forEach(i -> System.out.println(i));
-
 
     }
 
