@@ -9,19 +9,19 @@ public class Controller {
 
     public static void main(String[] args) {
 
-        Callable<Integer> exampleCall1 = () -> { //it is equivalent to writing callable class and override call()
+        Callable<Integer> exampleCall1 = () -> {
             Random generator = new Random();
             Integer randomNumber = generator.nextInt(5);
             Thread.sleep(randomNumber * 1000);
             return randomNumber;
         };
-        Callable<Integer> exampleCall2 = () -> { //it is equivalent to writing callable class and override call()
+        Callable<Integer> exampleCall2 = () -> {
             Random generator = new Random();
             Integer randomNumber = generator.nextInt(5);
             Thread.sleep(randomNumber * 2000);
             return randomNumber;
         };
-        Callable<Integer> exampleCall3 = () -> { //it is equivalent to writing callable class and override call()
+        Callable<Integer> exampleCall3 = () -> {
             Random generator = new Random();
             Integer randomNumber = generator.nextInt(5);
             Thread.sleep(randomNumber * 3000);
@@ -34,24 +34,17 @@ public class Controller {
         //Future<Integer> result = executorService.submit(exampleCall); //submit one task
         List<Future<Integer>> results=null;
         try {
+            //if we check invokeAll implementation, it calls get on all futures, so it is blocking
             results=executorService.invokeAll(taskList);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        results.forEach((res)->{
+        results.forEach(res-> {
             try {
-                if (res.isDone())
-
-                    System.out.println("result : " + res.get().toString());
-
-                else
-
-                    Thread.sleep(1000);
-
-            }
-            catch (Exception e) {
-                System.out.println(e.toString());
+                System.out.println("result : " + res.get().toString());
+            } catch (Exception e1) {
+                e1.printStackTrace();
             }
         });
 

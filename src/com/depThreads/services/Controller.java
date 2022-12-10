@@ -17,9 +17,7 @@ public class Controller {
     public static void main(String[] args) {
 
         try {
-
             String jobName = "";
-
             logger.log(Level.INFO, "Available processors: {0}", Runtime.getRuntime().availableProcessors());
 
             if (args.length < 2) {
@@ -31,16 +29,15 @@ public class Controller {
                 jobName = "MonthlyJob";
             } else {
                 logger.log(Level.INFO, "Wrong Type of job : {0}", args[0]);
-            System.exit(0);
-        }
+                System.exit(0);
+            }
 
             int threadNum = Integer.valueOf(args[1]);
             logger.log(Level.INFO, "Type of the job: {0}", jobName);
-            //if there is no wait for IO or .., the best number of threads:availableProcessors
-            //else availableProcessors + n
-            //to debug multi-thread, 1- set breakpoints 2- debug 3- f9 to go to breakpoint in thread
+
             Dispatcher.dispatch(jobName, threadNum);
             System.exit(0);
+
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
