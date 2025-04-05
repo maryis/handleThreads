@@ -11,9 +11,9 @@ There are two types of thread synchronization:
 - inter-thread communication.
 
 Mutual Exclusive (on critical section)
-  - Synchronized method.
-        -instance method: only one thread can run the method per instance(aquire the lock of (this))
-        -static method: only one thread can run the method (aquire the lock of class)
+  - Synchronized method:
+        - instance method: only one thread can run the method per instance(aquire the lock of (this))
+        - static method: only one thread can run the method (acquire the lock of class)
   - Synchronized block (it needs an object as monitor object) (Object obj = new Object())
          - only one thread can run the lines(aquire the lock of the monitor object)
          
